@@ -29,7 +29,7 @@ public class ExcelEx03 {
 	                {"Datatype", "Type", "Size(in bytes)"},
 	                {"int", "Primitive", 2},
 	                {"float", "Primitive", 4},
-	                {"double", "Primitive", 8},
+	                {"double","Primitive", 8},
 	                {"char", "Primitive", 1},
 	                {"String", "Non-Primitive", "No fixed size"}
 	        };
