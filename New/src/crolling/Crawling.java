@@ -1,13 +1,12 @@
 package crolling;
 
 import java.io.IOException;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class Crolling {
+public class Crawling {
 	public static void main(String[] args) throws IOException {
 		String url = "https://weather.naver.com/rgn/cityWetrMain.nhn";
 
