@@ -39,6 +39,14 @@ public class ListEx1 {
 		
 //		list.get(0);		// "10"
 		
+
+//		System.out.println(list.get(0));
+//		System.out.println(list.size()); // 7
+//		
+//		// 반복문으로 출력
+//		System.out.println("반복문으로 출력");
+//		for(int i =0; i< list.size(); i++)
+//			System.out.println(list.get(i));
 		
 		// Map
 		HashMap<String, String> map = new HashMap<>();
@@ -52,11 +60,17 @@ public class ListEx1 {
 		Set<String> set = map.keySet();
 		Iterator<String> iter = set.iterator();
 		
-//		while(iter.hasNext()) {
-//			System.out.println(map.get(iter.next()));
-//		}
+		while(iter.hasNext()) {
+			System.out.println(map.get(iter.next()));
+		}
+		
+//		GeustInfo guest3 = new GeustInfo();
+//		cList.add(1);
+//		cList.add("1");
+//		cList.add(guest3);
 		
 		ArrayList<GeustInfo> cList = new ArrayList<>();
+		
 		
 		GeustInfo guest1 = new GeustInfo();
 		GeustInfo guest2 = new GeustInfo();
@@ -73,6 +87,9 @@ public class ListEx1 {
 		
 		cList.add(guest1);
 		cList.add(guest2);
+		
+		System.out.println(cList.size());
+		
 		
 		String search = "배성호";
 		
@@ -104,8 +121,11 @@ public class ListEx1 {
 		hMap4.put(guest2.getName(), guest2);
 		
 		System.out.println("Map");
-		System.out.println(hMap1.get(search).getAge());
 		
+		GeustInfo gi =  hMap1.get(search);
+		int age = hMap1.get(search).getAge();
+		
+		hMap1.get(search).getAge();
 		
 		HashMap<Integer, HashMap<String, GeustInfo>> m1 = new HashMap<>();
 		HashMap<Integer, ArrayList<GeustInfo>> m2 = new HashMap<>();
@@ -114,15 +134,21 @@ public class ListEx1 {
 		m1.put(300, hMap3);
 		m1.put(400, hMap4);
 		
+		ArrayList<HashMap<Integer, HashMap<String, GeustInfo>>> aaaList = new ArrayList<>();
+		
+		ArrayList<Object> objList = new ArrayList<>();
+		objList.add(m1);
+		objList.add(m2);
+		objList.add(search);
+		objList.add(age);
+		objList.add(gi);
+		
+		System.out.println(m1);
+		
 		m2.put(400, cList);
 		
-//		System.out.println(list.get(0));
-//		System.out.println(list.size()); // 7
-//		
-//		// 반복문으로 출력
-//		System.out.println("반복문으로 출력");
-//		for(int i =0; i< list.size(); i++)
-//			System.out.println(list.get(i));
+		
+		
 		
 	}
 }
