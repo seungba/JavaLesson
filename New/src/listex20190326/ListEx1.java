@@ -29,12 +29,12 @@ public class ListEx1 {
 //		list.add("15");		// 5
 //		list.add("16");		// 6
 //		
-//		System.out.println("넣기 전 : " + list.get(1));			// 11
+//		System.out.println("넣기 전 : " + list.get(1));		// 11
 //		System.out.println("넣기 전 size : " + list.size());	// 7 
 //		list.add(1, "20");
 //		list.remove("20");
-//		System.out.println("넣은 후 : " + list.get(1));			// 11
-//		System.out.println("넣은 후 : " + list.get(2));			// 12
+//		System.out.println("넣은 후 : " + list.get(1));		// 11
+//		System.out.println("넣은 후 : " + list.get(2));		// 12
 //		System.out.println("넣기 후 size : " + list.size());	// 7
 		
 //		list.get(0);		// "10"
