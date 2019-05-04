@@ -1,4 +1,4 @@
-package crolling;
+package Crawling;
 
 import java.io.IOException;
 import org.jsoup.Jsoup;
