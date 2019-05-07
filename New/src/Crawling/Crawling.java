@@ -11,8 +11,9 @@ public class Crawling {
 		String url = "https://weather.naver.com/rgn/cityWetrMain.nhn";
 
         Document doc = Jsoup.connect(url).get();
-        Elements elements = doc.getElementsByTag("tbody");
-        Element element = elements.get(1);
+        Elements elements_tbody = doc.getElementsByTag("tbody");
+        Elements elements_row = doc.getElementsByTag("tbody");
+        Element element = elements_tbody.get(1);
         
         // #1
 //        elements = element.getElementsByTag("tr");
@@ -50,13 +51,26 @@ public class Crawling {
 //	        System.out.println(temp2);
 //	        System.out.println();	        
 //        }        
-        elements = elements.get(1).getElementsByAttributeValue("class", "temp");
+        elements_tbody = elements_tbody.get(1).getElementsByAttributeValue("class", "temp");
+        elements_row = elements_row.get(1).getElementsByAttributeValue("scope", "row");
 //        System.out.println(elements);
-        for (int i = 0; i < elements.size(); i++) {
+        
+
+		System.out.println(element);
+		System.out.println("--------");
+		System.out.println(elements_tbody); // "class,tempt"
+		System.out.println("--------");
+		System.out.println(elements_row); // "scope,row" 0~11
+		System.out.println("--------");
+		
+        for (int i = 0; i < elements_tbody.size(); i++) {
+        	
 			if(i%2 == 0) {
-				System.out.println("¿ÀÀü : " + elements.get(i).text());
+				System.out.println(elements_row.get(i/2).text());
+				System.out.println("ì˜¤ì „ : " + elements_tbody.get(i).text());
 			} else {
-				System.out.println("¿ÀÈÄ : " + elements.get(i).text());
+				System.out.println("ì˜¤í›„ : " + elements_tbody.get(i).text());
+				System.out.println();
 			}
 		}
 	}
