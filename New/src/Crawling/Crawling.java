@@ -12,37 +12,36 @@ public class Crawling {
 	public static void main(String[] args) throws IOException {
 		String url = "https://weather.naver.com/rgn/cityWetrMain.nhn";
 
-        Document doc = Jsoup.connect(url).get();
-        Elements elements_tbody = doc.getElementsByTag("tbody");
-        Elements elements_row = doc.getElementsByTag("tbody"); // 조건을 주어서 가져오면 Elements
-        Element element = elements_tbody.get(1);
-        
-        Elements empty_elems = new Elements();
-        empty_elems = empty_elems.append("vvv");
-        Element elem1 = new Element("div");
-        elem1 = elem1.text("ddddd");
-        Element elem2 = new Element("img");
-        Element elem3 = new Element("a");
-        
-        empty_elems.add(elem1);
-        empty_elems.add(elem2);
-        empty_elems.add(elem3);
-        
-        System.out.println(empty_elems);
-        
-        // #1
+		Document doc = Jsoup.connect(url).get();
+		Elements elements_tbody = doc.getElementsByTag("tbody");
+		Elements elements_row = doc.getElementsByTag("tbody"); // 조건을 주어서 가져오면 Elements
+		Element element = elements_tbody.get(1);
+
+		Elements empty_elems = new Elements();
+		empty_elems = empty_elems.append("vvv");
+		Element elem1 = new Element("div");
+		elem1 = elem1.text("ddddd");
+		Element elem2 = new Element("img");
+		Element elem3 = new Element("a");
+
+		empty_elems.add(elem1);
+		empty_elems.add(elem2);
+		empty_elems.add(elem3);
+
+		System.out.println(empty_elems);
+
+		// #1
 //        elements = element.getElementsByTag("tr");
 //        String str = elements.get(0).getElementsByTag("td").get(0).getElementsByTag("ul").get(0).getElementsByTag("li").get(0).text();
 //        
 //        System.out.println(str);
-        
+
 //         #2
 //        elements = element.getElementsByAttributeValue("class", "nm");
 //        System.out.println(elements.get(0).text());
 //        System.out.println(elements);
-        
-       
-       //#3
+
+		// #3
 //       Elements trElem = element.getElementsByTag("tr");
 //        for(int i=0; i < trElem.size(); i++) {
 //	        Element element1 = trElem.get(i).getElementsByTag("th").get(0).getElementsByTag("a").get(0);
@@ -66,20 +65,20 @@ public class Crawling {
 //	        System.out.println(temp2);
 //	        System.out.println();	        
 //        }        
-        elements_tbody = elements_tbody.get(1).getElementsByAttributeValue("class", "temp");
-        elements_row = elements_row.get(1).getElementsByAttributeValue("scope", "row");
+		elements_tbody = elements_tbody.get(1).getElementsByAttributeValue("class", "temp");
+		elements_row = elements_row.get(1).getElementsByAttributeValue("scope", "row");
 //        System.out.println(elements);
-        
+
 		System.out.println(element); // index 1번째 <tbody>
 		System.out.println("--------");
 		System.out.println(elements_tbody); // "class,tempt"
 		System.out.println("--------");
 		System.out.println(elements_row); // "scope,row" 0~11
 		System.out.println("--------");
-		
-        for (int i = 0; i < elements_tbody.size(); i++) {
-			if(i%2 == 0) {
-				System.out.println(elements_row.get(i/2).text());
+
+		for (int i = 0; i < elements_tbody.size(); i++) {
+			if (i % 2 == 0) {
+				System.out.println(elements_row.get(i / 2).text());
 				System.out.println("오전 : " + elements_tbody.get(i).text());
 			} else {
 				System.out.println("오후 : " + elements_tbody.get(i).text());
