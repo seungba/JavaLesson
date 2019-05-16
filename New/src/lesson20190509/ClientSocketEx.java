@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Scanner;
 
 public class ClientSocketEx {
 	public static void main(String[] args)
@@ -16,16 +17,21 @@ public class ClientSocketEx {
 		Socket socket = null;
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
-		for (int i = 0; i < 5; i++) {
+		Scanner sc = new Scanner(System.in);
+		while(true) {
 			// establish socket connection to server
-			socket = new Socket(host.getHostName(), 9898);
+//			socket = new Socket(host.getHostName(), 80);
+			
+			socket = new Socket("localhost", 8080);
 			// write to socket using ObjectOutputStream
+			
 			oos = new ObjectOutputStream(socket.getOutputStream());
 			System.out.println("Sending request to Socket Server");
-			if (i == 4)
-				oos.writeObject("EXIT");
-			else
-				oos.writeObject("" + i);
+			
+			System.out.print("입력하세요 : ");
+			String sendMessage = sc.nextLine();
+			oos.writeObject(sendMessage);
+			
 			// read the server response message
 			ois = new ObjectInputStream(socket.getInputStream());
 			String message = (String) ois.readObject();
