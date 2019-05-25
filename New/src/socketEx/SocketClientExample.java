@@ -1,5 +1,4 @@
-    
-package lesson20190509;
+package socketEx;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -7,45 +6,35 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Scanner;
 
-public class ClientSocketEx {
+public class SocketClientExample {
+
 	public static void main(String[] args)
 			throws UnknownHostException, IOException, ClassNotFoundException, InterruptedException {
-		// get the localhost IP address, if server is running on some other IP, you need
-		// to use that
+		// get the localhost IP address, if server is running on some other IP,
+		// you need to use that
 		InetAddress host = InetAddress.getLocalHost();
 		Socket socket = null;
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
-		Scanner sc = new Scanner(System.in);
-
-		while(true) {
+		for (int i = 0; i < 5; i++) {
 			// establish socket connection to server
-//			socket = new Socket(host.getHostName(), 80);
-			
-			socket = new Socket("localhost", 8080);
+			socket = new Socket("localhost", 9876);
 			// write to socket using ObjectOutputStream
-			
 			oos = new ObjectOutputStream(socket.getOutputStream());
 			System.out.println("Sending request to Socket Server");
-			
-			System.out.print("입력하세요 : ");
-			String sendMessage = sc.nextLine();
-			oos.writeObject(sendMessage);
-			
+			if (i == 4)
+				oos.writeObject("exit");
+			else
+				oos.writeObject("" + i);
 			// read the server response message
 			ois = new ObjectInputStream(socket.getInputStream());
 			String message = (String) ois.readObject();
 			System.out.println("Message: " + message);
 			// close resources
-//			if(message.equalsIgnoreCase("exit")) {
-//				ois.close();
-//				oos.close();
-//				socket.close();
-//			}
+			ois.close();
+			oos.close();
 			Thread.sleep(100);
 		}
-		
 	}
-} 
+}
